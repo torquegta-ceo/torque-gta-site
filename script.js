@@ -1,7 +1,40 @@
+const header = document.querySelector('.site-header');
+const menu = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.desktop-nav');
 
-const nav=document.querySelector('.nav'),toggle=document.querySelector('[data-menu-toggle]');if(toggle)toggle.onclick=()=>nav.classList.toggle('open');
-const JOT='https://form.jotform.com/261104749999068';
-const S={diagnostics:['Diagnostics',99,159,'Check engine light, warning lights, drivability issues, and basic fault tracing.'],brakes:['Brake Service',150,260,'Labour starting per axle. Parts and hardware extra unless supplied.'],nostart:['No-Start Help',120,189,'Battery, starter, alternator, charging and electrical no-start direction.'],battery:['Battery Replacement',120,220,'Battery cost varies by vehicle.'],oil:['Oil Change',80,150,'Labour starting price. Oil and filter vary by vehicle.'],suspension:['Suspension',160,360,'Struts, shocks, sway links, control arms, and ride quality repairs.'],alternator:['Alternator / Starter',180,420,'Starting/charging labour estimate.'],inspection:['Pre-Purchase Inspection',150,220,'On-site vehicle condition review before purchase.'],fleet:['Fleet Service',0,0,'Custom quote based on fleet size and service volume.'],unsure:['Not Sure / Need Help',99,169,'Start with diagnostic direction and follow-up.']};
-const C={toronto:0,northyork:10,scarborough:10,etobicoke:10,mississauga:20,brampton:25,vaughan:20,markham:20,richmondhill:25,other:30},CL={toronto:'Toronto',northyork:'North York',scarborough:'Scarborough',etobicoke:'Etobicoke',mississauga:'Mississauga',brampton:'Brampton',vaughan:'Vaughan',markham:'Markham',richmondhill:'Richmond Hill',other:'Other GTA'},U={flexible:0,week:10,h24:35,asap:55},UL={flexible:'Flexible',week:'This Week',h24:'Within 24 Hours',asap:'ASAP Today'};
-function $(id){return document.getElementById(id)}function m(n){return '$'+Math.round(n).toLocaleString('en-CA')}function calc(p=''){let service=$(p+'service')?.value||'diagnostics',city=$(p+'city')?.value||'toronto',urg=$(p+'urgency')?.value||'flexible',year=$(p+'year')?.value||'',make=$(p+'make')?.value||'',model=$(p+'model')?.value||'',s=S[service],res=$(p+'result'),range=$(p+'range'),sum=$(p+'summary'),note=$(p+'note'),book=$(p+'book');if(!res)return;if(service==='fleet')range.textContent='Custom Quote';else range.textContent=m(s[1]+(C[city]||0)+(U[urg]||0))+' – '+m(s[2]+(C[city]||0)+(U[urg]||0));sum.textContent=s[0]+' • '+[year,make,model].filter(Boolean).join(' ')+' • '+CL[city]+' • '+UL[urg];note.textContent=s[3]+' Final price may change based on access, parts, diagnosis, and confirmed scope.';res.classList.add('show');if(book){book.href=JOT+'?'+new URLSearchParams({service:s[0],city:CL[city],urgency:UL[urg],vehicle:[year,make,model].filter(Boolean).join(' ')})}}
-['','home-'].forEach(p=>['service','city','urgency','year','make','model'].forEach(x=>{let e=$(p+x);if(e){e.onchange=()=>calc(p);e.oninput=()=>calc(p)}}));document.querySelectorAll('[data-calc]').forEach(b=>b.onclick=e=>{e.preventDefault();calc(b.dataset.calc)});if($('service'))calc('');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+menu?.addEventListener('click', () => {
+  const isOpen = menu.getAttribute('aria-expanded') === 'true';
+  menu.setAttribute('aria-expanded', String(!isOpen));
+  if (!isOpen) {
+    nav.style.display = 'flex';
+    nav.style.position = 'absolute';
+    nav.style.top = '68px';
+    nav.style.left = '14px';
+    nav.style.right = '14px';
+    nav.style.flexDirection = 'column';
+    nav.style.padding = '20px';
+    nav.style.border = '1px solid rgba(255,255,255,.09)';
+    nav.style.borderRadius = '16px';
+    nav.style.background = 'rgba(5,7,10,.96)';
+    nav.style.backdropFilter = 'blur(20px)';
+  } else {
+    nav.removeAttribute('style');
+  }
+});
