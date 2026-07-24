@@ -1,199 +1,245 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#05070a" />
-  <title>TORQUE GTA | Mobile Auto & Diagnostics</title>
-  <meta name="description" content="Professional mobile diagnostics, brake service, maintenance and select repairs delivered across Toronto and the Greater Toronto Area." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TORQUE GTA | Premium Mobile Auto Service</title>
+  <meta name="description" content="Professional mobile diagnostics, brakes, maintenance, oil service, batteries and select repairs delivered across Toronto and the GTA.">
+
+  <meta property="og:title" content="TORQUE GTA | Premium Mobile Auto Service">
+  <meta property="og:description" content="Professional mobile diagnostics, brakes, maintenance and select repairs across Toronto and the GTA.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://torquegta.ca/">
+
+  <style>
+    :root{
+      --bg:#05070a;--panel:#0b0f14;--panel2:#0f141b;--text:#f7f9fc;--muted:#9aa6b6;
+      --line:rgba(255,255,255,.10);--blue:#0a6cff;--blue2:#3c8dff;--max:1180px
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:
+      radial-gradient(circle at 80% 5%,rgba(10,108,255,.18),transparent 26rem),
+      linear-gradient(180deg,#05070a 0%,#070a0f 100%);
+      color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(calc(100% - 36px),var(--max));margin:auto}
+    header{position:sticky;top:0;z-index:30;background:rgba(5,7,10,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:900;letter-spacing:.02em;font-size:20px}.brand span{color:var(--blue2)}.brand small{display:block;color:#7f8a99;font-size:9px;letter-spacing:.18em;margin-top:2px}
+    nav{display:flex;gap:24px;font-size:14px;color:#c2cbd7}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 20px;border-radius:12px;font-weight:800;font-size:14px;border:1px solid transparent;transition:.2s}
+    .btn:hover{transform:translateY(-1px)}
+    .primary{background:var(--blue);box-shadow:0 16px 45px rgba(10,108,255,.25)}
+    .secondary{border-color:var(--line);background:rgba(255,255,255,.03)}
+    .hero{padding:110px 0 80px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+    .kicker,.pill{color:var(--blue2);font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+    h1,h2,h3{margin-top:0}
+    h1{font-size:clamp(50px,7vw,96px);line-height:.94;letter-spacing:-.055em;margin-bottom:24px}
+    h1 .blue,h2 .blue{color:var(--blue2)}
+    .lead{font-size:20px;color:#b8c2cf;max-width:760px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .hero-card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(10,108,255,.12),rgba(255,255,255,.025));border-radius:28px;padding:28px;box-shadow:0 40px 100px rgba(0,0,0,.42)}
+    .hero-card h3{font-size:26px;margin-bottom:12px}.hero-card p{color:var(--muted)}
+    .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+    .mini{padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}
+    .mini b{display:block}.mini span{color:var(--muted);font-size:13px}
+    .trust{padding:22px 0;border-block:1px solid var(--line);background:rgba(255,255,255,.015)}
+    .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .trust-card{padding:16px}.trust-card b{display:block;margin-bottom:4px}.trust-card span{font-size:13px;color:var(--muted)}
+    section{padding:95px 0}
+    .dark{background:#070a0f;border-block:1px solid var(--line)}
+    .section-head{max-width:760px;margin-bottom:42px}
+    h2{font-size:clamp(38px,5vw,68px);line-height:1;letter-spacing:-.045em;margin-bottom:16px}
+    .section-head p,.muted{color:var(--muted)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{padding:28px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015));border-radius:20px;min-height:220px}
+    .num{color:var(--blue2);font-weight:900;font-size:12px;letter-spacing:.14em}.card h3{font-size:24px;margin:44px 0 10px}.card p{color:var(--muted);margin:0}
+    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .step{padding:22px;border-top:1px solid var(--line)}.step b{color:var(--blue2)}.step h3{margin:28px 0 8px;font-size:20px}.step p{color:var(--muted);margin:0;font-size:14px}
+    .banner{border:1px solid rgba(10,108,255,.28);border-radius:28px;padding:44px;background:linear-gradient(145deg,rgba(10,108,255,.11),rgba(255,255,255,.02))}
+    .list{display:grid;gap:12px;margin:24px 0}.list div{padding:12px 0;border-bottom:1px solid var(--line);color:#c7d0db}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+    .waitlist-card{padding:28px;border-radius:22px;background:#080c12;border:1px solid var(--line)}
+    .waitlist-card ul{margin:18px 0 0;padding-left:20px;color:#aab5c3}
+    .cta{text-align:center;padding:110px 0}.cta>div{max-width:900px;margin:auto}
+    footer{border-top:1px solid var(--line);padding:34px 0;color:#8591a1;font-size:13px}
+    .footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+    .mobile-cta{display:none}
+    @media(max-width:620px){
+      body{padding-bottom:76px}
+      .mobile-cta{
+        position:fixed;left:10px;right:10px;bottom:10px;z-index:50;
+        display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;
+        border:1px solid var(--line);background:rgba(5,7,10,.92);
+        backdrop-filter:blur(18px);border-radius:16px;
+        box-shadow:0 20px 60px rgba(0,0,0,.45)
+      }
+      .mobile-cta .btn{min-height:48px;padding:0 12px;font-size:13px}
+      .trust-card{padding:14px 4px}
+      .hero-card{padding:22px}
+      .card{min-height:0}
+      h2{font-size:clamp(38px,12vw,56px)}
+    }
+
+    @media(max-width:900px){
+      nav{display:none}.hero-grid,.split{grid-template-columns:1fr}.trust-grid{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.hero{padding-top:80px}
+    }
+    @media(max-width:620px){
+      .nav>.btn{display:none}.hero{padding:70px 0 55px}h1{font-size:clamp(46px,15vw,70px)}
+      .actions{flex-direction:column}.btn{width:100%}.trust-grid,.grid-3,.steps{grid-template-columns:1fr}
+      section{padding:75px 0}.banner{padding:26px}.mini-grid{grid-template-columns:1fr}.lead{font-size:17px}
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="TORQUE GTA home">
-      <img src="assets/torque-logo.png" alt="TORQUE GTA Mobile Auto & Diagnostics" />
-    </a>
-    <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="#services">Services</a>
-      <a href="#why">Why TORQUE</a>
-      <a href="#app">Early Access</a>
-      <a href="#fleet">Fleet</a>
-    </nav>
-    <a class="nav-cta" href="tel:+17426886822">Call Now</a>
-    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span>
-    </button>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="/">TORQUE <span>GTA</span><small>MOBILE AUTO & DIAGNOSTICS</small></a>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#how">How It Works</a>
+        <a href="#app">App Waitlist</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn primary" href="tel:+17426886822">Book Service</a>
+    </div>
   </header>
 
   <main>
-    <section class="hero section">
-      <div class="hero-glow"></div>
-      <div class="hero-copy reveal">
-        <p class="eyebrow">TORONTO & THE GREATER TORONTO AREA</p>
-        <h1>EXPERT CAR CARE.<br><span>WE COME TO YOU.</span></h1>
-        <p class="hero-text">
-          Professional diagnostics, brakes, maintenance and select repairs—delivered directly to drivers across Toronto and the GTA.
-        </p>
-        <div class="hero-actions">
-          <a class="button primary" href="tel:+17426886822">Book Service</a>
-          <a class="button secondary" href="#app">Explore Early Access</a>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker">Premium Mobile Mechanic Services</div>
+          <h1>Expert Car Care.<br><span class="blue">We Come To You.</span></h1>
+          <p class="lead">Professional diagnostics, brakes, maintenance, oil service, batteries and select repairs—delivered directly to drivers across Toronto and the GTA.</p>
+          <div class="actions">
+            <a class="btn primary" href="tel:+17426886822">Book Service</a>
+            <a class="btn secondary" href="/app">Explore Early Access</a>
+          </div>
         </div>
-        <div class="trust-row" aria-label="Service highlights">
-          <span>Mobile Service</span>
-          <span>Transparent Pricing</span>
-          <span>Professional Diagnostics</span>
-          <span>GTA Coverage</span>
-        </div>
-      </div>
 
-      <div class="hero-media reveal" aria-label="TORQUE GTA service truck">
-        <img src="assets/hero-f150.jpg" alt="TORQUE GTA branded Ford F-150 service vehicle" />
-        <div class="media-badge">
-          <strong>WE COME TO YOU.</strong>
-          <span>QUALITY YOU CAN TRUST.</span>
+        <div class="hero-card">
+          <div class="pill">Proudly Serving Toronto & GTA</div>
+          <h3>TORQUE GTA</h3>
+          <p>Mobile Auto & Diagnostics</p>
+          <div class="mini-grid">
+            <div class="mini"><b>Diagnostics</b><span>Check engine lights, inspections & issue discovery</span></div>
+            <div class="mini"><b>Brakes</b><span>Pads, rotors & safety checks</span></div>
+            <div class="mini"><b>Maintenance</b><span>Oil changes, batteries, filters & more</span></div>
+            <div class="mini"><b>GTA Coverage</b><span>Toronto and surrounding service areas</span></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="trust-strip">
-      <div>Professional Equipment</div>
-      <div>Mobile Convenience</div>
-      <div>Clear Communication</div>
-      <div>Local GTA Service</div>
-    </section>
+    <div class="trust">
+      <div class="container trust-grid">
+        <div class="trust-card"><b>Professional Service</b><span>Your vehicle is handled with care, professional equipment, and clear communication.</span></div>
+        <div class="trust-card"><b>Convenient Service</b><span>Home, office, or approved roadside location.</span></div>
+        <div class="trust-card"><b>Fast Response</b><span>Real people. Real help.</span></div>
+        <div class="trust-card"><b>Quality You Can Trust</b><span>Professional service standards.</span></div>
+      </div>
+    </div>
 
-    <section class="section" id="services">
-      <div class="section-heading reveal">
-        <p class="eyebrow">MOBILE SERVICE, WITHOUT THE SHOP</p>
-        <h2>Built around your schedule.</h2>
-        <p>Focused services delivered where your vehicle already is.</p>
-      </div>
-
-      <div class="service-grid">
-        <article class="service-card reveal">
-          <span class="service-number">01</span>
-          <h3>Diagnostics</h3>
-          <p>Professional troubleshooting for warning lights, no-start conditions and drivability concerns.</p>
-        </article>
-        <article class="service-card reveal">
-          <span class="service-number">02</span>
-          <h3>Brake Service</h3>
-          <p>Brake pads and rotors serviced at your location with transparent, vehicle-specific recommendations.</p>
-        </article>
-        <article class="service-card reveal">
-          <span class="service-number">03</span>
-          <h3>Maintenance</h3>
-          <p>Routine maintenance designed to reduce downtime and keep your vehicle ready for the road.</p>
-        </article>
-        <article class="service-card reveal">
-          <span class="service-number">04</span>
-          <h3>Battery & Starting</h3>
-          <p>Battery replacement, charging-system checks and starting-system diagnosis delivered on-site.</p>
-        </article>
-        <article class="service-card reveal">
-          <span class="service-number">05</span>
-          <h3>Suspension</h3>
-          <p>Select suspension services for drivers who want convenience without sacrificing professional care.</p>
-        </article>
-        <article class="service-card reveal">
-          <span class="service-number">06</span>
-          <h3>Fleet Support</h3>
-          <p>Mobile support for small commercial fleets that cannot afford unnecessary vehicle downtime.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section split-section" id="why">
-      <div class="split-copy reveal">
-        <p class="eyebrow">WHY TORQUE GTA</p>
-        <h2>Your vehicle shouldn’t have to lose a day to get serviced.</h2>
-        <p>
-          TORQUE GTA is built around a simple idea: professional automotive service should fit into your life—not force your life to fit around a repair shop.
-        </p>
-      </div>
-      <div class="benefit-list reveal">
-        <div><strong>01</strong><span>We come to your home, workplace or approved service location.</span></div>
-        <div><strong>02</strong><span>Clear recommendations before work begins.</span></div>
-        <div><strong>03</strong><span>Professional tools and diagnostic equipment.</span></div>
-        <div><strong>04</strong><span>A modern customer experience built for busy people.</span></div>
-      </div>
-    </section>
-
-    <section class="section process">
-      <div class="section-heading reveal">
-        <p class="eyebrow">HOW IT WORKS</p>
-        <h2>Simple from request to road-ready.</h2>
-      </div>
-      <div class="process-grid">
-        <div class="process-step reveal">
-          <span>01</span>
-          <h3>Choose Your Service</h3>
-          <p>Tell us what your vehicle needs.</p>
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="pill">Core Services</div>
+          <h2>Mobile Auto Service Built For Busy Drivers.</h2>
+          <p>Focused mobile service for drivers who value time, clarity, convenience and professional execution.</p>
         </div>
-        <div class="process-step reveal">
-          <span>02</span>
-          <h3>Confirm Time & Place</h3>
-          <p>Choose a location that works for you.</p>
-        </div>
-        <div class="process-step reveal">
-          <span>03</span>
-          <h3>We Come To You</h3>
-          <p>Our mobile service arrives prepared.</p>
+        <div class="grid-3">
+          <div class="card"><div class="num">01</div><h3>Diagnostics</h3><p>Check engine lights, inspections, fault code diagnosis, and issue discovery.</p></div>
+          <div class="card"><div class="num">02</div><h3>Oil Changes</h3><p>Full synthetic oil and filter service brought directly to your location.</p></div>
+          <div class="card"><div class="num">03</div><h3>Brake Service</h3><p>Pads, rotors, brake inspections, replacement packages, and safety checks.</p></div>
+          <div class="card"><div class="num">04</div><h3>Batteries</h3><p>Battery testing, replacement, charging system checks, and mobile installs.</p></div>
+          <div class="card"><div class="num">05</div><h3>Maintenance</h3><p>Filters, spark plugs, fluids, inspections, and preventative service support.</p></div>
+          <div class="card"><div class="num">06</div><h3>Fleet Support</h3><p>Mobile maintenance for small business vehicles, operators, and local fleets.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="section app-section" id="app">
-      <div class="app-copy reveal">
-        <p class="eyebrow">TORQUE GTA APP • PRE-RELEASE</p>
-        <h2>The future of vehicle service is being built now.</h2>
-        <p>
-          We’re developing a streamlined service experience for booking, pricing, updates and vehicle records—all in one place.
-        </p>
-        <div class="founder-card">
-          <span>FOUNDING MEMBERSHIP</span>
-          <strong>Early access. Priority treatment. Built with the first believers.</strong>
-          <p>Enrollment is limited while we expand technician capacity and prepare the next phase of TORQUE GTA.</p>
+    <section id="how" class="dark">
+      <div class="container">
+        <div class="section-head"><div class="pill">How It Works</div><h2>Simple From Request To Road-Ready.</h2><p>A straightforward mobile service experience from first contact to completed work.</p></div>
+        <div class="steps">
+          <div class="step"><b>01</b><h3>Choose Your Service</h3><p>Tell us your vehicle, concern and service need.</p></div>
+          <div class="step"><b>02</b><h3>Confirm Time & Place</h3><p>We confirm fit, availability and your service location.</p></div>
+          <div class="step"><b>03</b><h3>We Come To You</h3><p>Home, office, driveway, or approved roadside location.</p></div>
+          <div class="step"><b>04</b><h3>Service & Update</h3><p>We complete the agreed work and keep you informed.</p></div>
+          <div class="step"><b>05</b><h3>Drive With Confidence</h3><p>You receive a clear record of the completed service.</p></div>
         </div>
-        <a class="button primary" href="https://torquegta.ca/app">Explore Early Access</a>
-      </div>
-
-      <div class="app-media reveal">
-        <img src="assets/app-preview.jpg" alt="TORQUE GTA app pre-release interface shown on mobile phones" />
       </div>
     </section>
 
-    <section class="section fleet-section" id="fleet">
-      <div class="fleet-panel reveal">
-        <p class="eyebrow">FLEET & COMMERCIAL</p>
-        <h2>Keep your vehicles working.</h2>
-        <p>
-          Mobile maintenance and diagnostic support for trades, delivery teams, contractors and small commercial fleets across the GTA.
-        </p>
-        <a class="button secondary" href="tel:+17426886822">Discuss Fleet Support</a>
+    <section id="app">
+      <div class="container split">
+        <div>
+          <div class="pill">TORQUE GTA App — Coming Soon</div>
+          <h2>Join The Pre-Release Waitlist.</h2>
+          <p class="muted">The TORQUE GTA app is currently in pre-release. Join for early access updates, Founding Membership opportunities and launch announcements as we build the next phase of the customer experience.</p>
+          <div class="actions">
+            <a class="btn primary" href="/app">Join App Waitlist</a>
+            <a class="btn secondary" href="tel:+17426886822">Call Instead</a>
+          </div>
+        </div>
+        <div class="waitlist-card">
+          <div class="pill">Pre-Release Access Includes</div>
+          <ul>
+            <li>Early app launch updates</li>
+            <li>Founding member opportunities</li>
+            <li>Priority service announcements</li>
+            <li>Early access to future platform features</li>
+            <li>Behind-the-scenes build updates</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section class="section final-cta">
-      <div class="reveal">
-        <p class="eyebrow">TORQUE GTA</p>
-        <h2>Better service starts by bringing the shop to you.</h2>
-        <p>Call today for service availability across Toronto and the Greater Toronto Area.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="tel:+17426886822">(742) 688-6822</a>
-          <a class="button secondary" href="https://torquegta.ca/app">Early Access</a>
+    <section class="dark">
+      <div class="container">
+        <div class="banner">
+          <div class="pill">Built For What Comes Next</div>
+          <h2>Built For What Comes Next.</h2>
+          <p class="muted">TORQUE GTA is building a smarter, more convenient way to own and maintain a vehicle—from professional mobile service today to a connected automotive experience tomorrow.</p>
+          <div class="actions">
+            <a class="btn primary" href="tel:+17426886822">Book Service</a>
+            <a class="btn secondary" href="/app">Explore Early Access</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="cta">
+      <div class="container">
+        <div class="pill">Need Mobile Auto Service?</div>
+        <h2>Premium Service.<br><span class="blue">Delivered To You.</span></h2>
+        <p class="muted">Professional mobile diagnostics, maintenance, brakes, batteries, oil service and select repairs across Toronto and the GTA.</p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn primary" href="tel:+17426886822">Call (742) 688-6822</a>
+          <a class="btn secondary" href="sms:+17426886822">Text / Contact</a>
+          <a class="btn secondary" href="/app">App Waitlist</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <img src="assets/torque-logo.png" alt="" />
-    <p>TORQUE GTA Mobile Auto & Diagnostics</p>
-    <p><a href="tel:+17426886822">(742) 688-6822</a> · Toronto & GTA</p>
-    <p class="legal">© <span id="year"></span> TORQUE GTA. All rights reserved.</p>
+    <div class="container footer">
+      <div><strong>TORQUE GTA</strong><br>Mobile Auto & Diagnostics</div>
+      <div>Serving Toronto & the GTA</div>
+      <div><a href="tel:+17426886822">(742) 688-6822</a></div>
+      <div><a href="/app">Pre-Release App Waitlist</a></div>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+  <div class="mobile-cta" aria-label="Quick actions">
+    <a class="btn primary" href="tel:+17426886822">Book Service</a>
+    <a class="btn secondary" href="/app">Early Access</a>
+  </div>
+
 </body>
 </html>
